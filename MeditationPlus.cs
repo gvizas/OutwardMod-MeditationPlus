@@ -86,16 +86,16 @@ namespace Meditation
             {
                 if (MeditationPlus.EnableBurntSitRegen.Value)
                 {
-                    stats.m_burntStamina = Mathf.Clamp(stats.m_burntStamina - MeditationPlus.BurntStaminaRegen.Value, 0, stats.MaxStamina);
-                    stats.m_burntHealth = Mathf.Clamp(stats.m_burntHealth - MeditationPlus.BurntHealthRegen.Value, 0, stats.MaxHealth);
-                    stats.m_burntMana = Mathf.Clamp(stats.m_burntMana - MeditationPlus.BurntManaRegen.Value, 0, stats.MaxMana);
+                    stats.m_burntStamina = Mathf.Clamp(stats.m_burntStamina - (MeditationPlus.BurntStaminaRegen.Value * Time.deltaTime), 0, stats.MaxStamina);
+                    stats.m_burntHealth = Mathf.Clamp(stats.m_burntHealth - (MeditationPlus.BurntHealthRegen.Value * Time.deltaTime), 0, stats.MaxHealth);
+                    stats.m_burntMana = Mathf.Clamp(stats.m_burntMana - (MeditationPlus.BurntManaRegen.Value * Time.deltaTime), 0, stats.MaxMana);
                 }
                 if (MeditationPlus.EnableCurrentSitRegen.Value)
                 {
 
-                    stats.m_stamina = Mathf.Clamp(stats.m_stamina + MeditationPlus.CurrentStaminaRegen.Value, 0, stats.ActiveMaxStamina);
-                    stats.m_health = Mathf.Clamp(stats.m_health + MeditationPlus.CurrentHealthRegen.Value, 0, stats.ActiveMaxHealth);
-                    stats.m_mana = Mathf.Clamp(stats.m_mana + MeditationPlus.CurrentManaRegen.Value, 0, stats.ActiveMaxMana);
+                    stats.m_stamina = Mathf.Clamp(stats.m_stamina + (MeditationPlus.CurrentStaminaRegen.Value * Time.deltaTime), 0, stats.ActiveMaxStamina);
+                    stats.m_health = Mathf.Clamp(stats.m_health + (MeditationPlus.CurrentHealthRegen.Value * Time.deltaTime), 0, stats.ActiveMaxHealth);
+                    stats.m_mana = Mathf.Clamp(stats.m_mana + (MeditationPlus.CurrentManaRegen.Value * Time.deltaTime), 0, stats.ActiveMaxMana);
                 }
             }
             return true;
